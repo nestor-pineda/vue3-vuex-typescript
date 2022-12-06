@@ -1,11 +1,15 @@
-import { createStore } from "vuex";
-import { State } from "@/interfaces/store.interface";
+import { createStore, createLogger } from "vuex";
+import { State, Post } from "@/interfaces/store.interface";
+
+const plugins = [createLogger()];
 
 // Lectura de estados globales. Variables que crearíamos en el data del options API.
 const state: State = {
   counter: 0,
   selectedNumbers: [],
-  classList: ["nestor", "pedro", "raquel", "marta", "luisa", "jacobo"],
+  classList: ["nestor", "juan", "raquel"],
+  list: [],
+  loading: false,
 };
 // Lectura de estados Computados. Estados que dependen de las variables en state. Tienen valor tangible. Computed Properties that depend on the state
 const getters = {
@@ -32,19 +36,34 @@ const mutations = {
   deleteNumber(state: State, value: number) {
     const itemIndex = state.selectedNumbers.indexOf(value);
     state.selectedNumbers.splice(itemIndex, 1);
-    // state.selectedNumbers = state.selectedNumbers.filter((index) => {
-    //   return value !== index;
-    // });
   },
-
   increaseCounter(state: State, value: number) {
     state.counter = value;
+  },
+  set(state: State, value: Post[]) {
+    state.list = value;
+    console.log(state.list);
+  },
+  setLoading(state: State, loading: boolean) {
+    state.loading = loading;
+  },
+};
+
+// we call async functions and combine them with mutations to set the a global state.
+const actions = {
+  async get({ commit }: any) {
+    const result = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const json = await result.json();
+    commit("set", json);
+    commit("setLoading", false);
   },
 };
 
 // export default createStore({})
 export default createStore({
+  plugins: plugins,
   state: state,
   getters: getters,
   mutations: mutations,
+  actions: actions,
 });
