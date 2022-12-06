@@ -61,9 +61,9 @@ const actions = {
 
 // export default createStore({})
 export default createStore({
-  plugins: plugins,
-  state: state,
-  getters: getters,
-  mutations: mutations,
-  actions: actions,
+  plugins,
+  state,
+  getters,
+  mutations,
+  actions,
 });
