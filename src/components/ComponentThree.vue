@@ -17,9 +17,9 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const counter = computed(() => store.state.counter);
-    const addValueToArray = () => store.commit("addSelectedNumbers", counter.value);
+    const addValueToArray = () => store.commit("numbers/numbersStore.ts/addSelectedNumbers", counter.value);
     const savedNums = computed(() => store.state.selectedNumbers);
-    const deleteValueFromArray = (num: number) => store.commit("deleteNumber", num);
+    const deleteValueFromArray = (num: number) => store.commit("numbers/numbersStore.ts/deleteNumber", num);
 
     return { counter, addValueToArray, savedNums, deleteValueFromArray };
   },

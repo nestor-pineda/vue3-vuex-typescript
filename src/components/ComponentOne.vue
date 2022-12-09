@@ -28,7 +28,7 @@ export default defineComponent({
       return (showNumber.value = inputNumber.value);
     };
 
-    const setCounter = () => store.commit("setInitialCounter", inputNumber.value);
+    const setCounter = () => store.commit("numbers/setInitialCounter", inputNumber.value);
 
     return { inputNumber, showNumber, submit, setCounter };
   },

@@ -21,7 +21,7 @@ export default defineComponent({
     // To mantain reactivity we use computed references for the state and the getters
     const counter = computed(() => store.state.counter);
     const counterTimes2 = computed(() => store.getters.counterTimes2);
-    const increment = () => store.commit("increaseCounter", counter.value + 1);
+    const increment = () => store.commit("/src/store/modules/numbers/numbersStore.ts/increaseCounter", counter.value + 1);
 
     // const classList = computed(() => store.state.classList);
     const classFilter = computed(() => store.getters.classFilter);
