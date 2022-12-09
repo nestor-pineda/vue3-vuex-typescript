@@ -3,7 +3,7 @@ import { NumberStateInterface } from "./state";
 import { StateInterface } from "../index";
 
 const actions: ActionTree<NumberStateInterface, StateInterface> = {
-  async get({ commit }: any) {
+  async get({ commit }) {
     const result = await fetch("https://jsonplaceholder.typicode.com/posts");
     const json = await result.json();
     commit("set", json);

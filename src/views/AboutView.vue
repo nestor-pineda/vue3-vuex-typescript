@@ -9,14 +9,15 @@
 import { defineComponent } from "vue";
 import ComponentFive from "@/components/ComponentFive.vue";
 import { useStore } from "vuex";
+import { StateInterface } from "@/store";
 
 export default defineComponent({
   name: "AboutView",
   components: { ComponentFive },
 
   setup() {
-    const store = useStore();
-    store.dispatch("get");
+    const store = useStore<StateInterface>();
+    store.dispatch("number/get");
     return {};
   },
 });
