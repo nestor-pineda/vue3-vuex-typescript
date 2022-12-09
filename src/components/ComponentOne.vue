@@ -17,10 +17,11 @@
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
 import { ref } from "@vue/reactivity";
+import { StateInterface } from "@/store";
 
 export default defineComponent({
   setup() {
-    const store = useStore();
+    const store = useStore<StateInterface>();
     let inputNumber = ref<number>(0);
     let showNumber = ref<number>(0);
 
@@ -28,7 +29,7 @@ export default defineComponent({
       return (showNumber.value = inputNumber.value);
     };
 
-    const setCounter = () => store.commit("setInitialCounter", inputNumber.value);
+    const setCounter = () => store.commit("number/setInitialCounter", inputNumber.value);
 
     return { inputNumber, showNumber, submit, setCounter };
   },

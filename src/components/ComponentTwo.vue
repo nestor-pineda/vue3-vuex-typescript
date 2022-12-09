@@ -10,18 +10,19 @@
 </template>
 
 <script lang="ts">
-import { computed } from "@vue/reactivity";
+import { StateInterface } from "@/store";
+import { computed, ComputedRef } from "@vue/reactivity";
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
   setup() {
-    const store = useStore();
+    const store = useStore<StateInterface>();
 
     // To mantain reactivity we use computed references for the state and the getters
-    const counter = computed(() => store.state.counter);
-    const counterTimes2 = computed(() => store.getters.counterTimes2);
-    const increment = () => store.commit("increaseCounter", counter.value + 1);
+    const counter: ComputedRef<number> = computed(() => store.state.number.counter);
+    const counterTimes2: ComputedRef<number> = computed(() => store.getters.counterTimes2);
+    const increment = () => store.commit("number/increaseCounter", counter.value + 1);
 
     // const classList = computed(() => store.state.classList);
     const classFilter = computed(() => store.getters.classFilter);
