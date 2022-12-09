@@ -16,7 +16,7 @@ export default defineComponent({
 
   setup() {
     const store = useStore();
-    store.dispatch("get");
+    store.dispatch("number/get");
     return {};
   },
 });

@@ -1,12 +1,12 @@
-export interface State {
+export interface NumberStateInterface {
   counter: number;
   selectedNumbers: number[];
   classList: string[];
-  list: Post[];
+  list: PostInterface[];
   loading: boolean;
 }
 
-export interface Post {
+export interface PostInterface {
   userId: number;
   id: number;
   title: string;

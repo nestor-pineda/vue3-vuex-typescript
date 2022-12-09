@@ -12,12 +12,13 @@
 import { computed } from "@vue/reactivity";
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
-import { Post } from "@/interfaces/store.interface";
+import { PostInterface } from "@/interfaces/store.interface";
+import { StateInterface } from "@/store";
 
 export default defineComponent({
   setup() {
-    const store = useStore();
-    const postList = computed<Post[]>(() => store.state.list);
+    const store = useStore<StateInterface>();
+    const postList = computed<PostInterface[]>(() => store.state.number.list);
 
     return { postList };
   },

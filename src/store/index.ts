@@ -1,12 +1,14 @@
-import { createStore, createLogger } from "vuex";
-import { numbers } from "@/store/modules/numbers/numbersStore";
+import { createStore } from "vuex";
+import { numberModule } from "@/store/modules/numbers/numbersStore";
+import { NumberStateInterface } from "@/interfaces/store.interface";
 
-const plugins = [createLogger()];
+export interface StateInterface {
+  number: NumberStateInterface;
+}
 
-// export default createStore({})
-export default createStore({
-  plugins,
+// export default createStore
+export default createStore<StateInterface>({
   modules: {
-    numbers,
+    number: numberModule,
   },
 });
