@@ -3,15 +3,16 @@
 </template>
 
 <script lang="ts">
-import { computed } from "@vue/reactivity";
+import { StateInterface } from "@/store";
+import { computed, ComputedRef } from "@vue/reactivity";
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
 
 export default defineComponent({
   setup() {
-    const store = useStore();
+    const store = useStore<StateInterface>();
 
-    const counter = computed(() => store.state.counter);
+    const counter: ComputedRef<number> = computed(() => store.state.number.counter);
 
     return {};
   },

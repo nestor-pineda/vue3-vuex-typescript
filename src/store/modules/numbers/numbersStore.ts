@@ -23,6 +23,7 @@ const getters = {
 // Mutaciones de estados sincronos. Methods que modifican los valores de los estados globales. No tienen valor tangible, son solo funciones.
 // El primer parametro que aceptaremos será el estado global que queremos modificar "initialCounter". luego aceptaremos los parametros que modificaran el estado.
 // Methods calls to change or update the state
+// Mutations are the onlyones that can change the state. A getter dosn't mutate the state, it gives some data computed from a state. Actions need mutations to change the state.
 const mutations = {
   setInitialCounter(state: State, value: number) {
     state.counter = value;
@@ -47,6 +48,7 @@ const mutations = {
 };
 
 // we call async functions and combine them with mutations to set the a global state.
+//Actions dont change the state by themsefl, they need to use mutations to change it.
 const actions = {
   async get({ commit }: any) {
     const result = await fetch("https://jsonplaceholder.typicode.com/posts");

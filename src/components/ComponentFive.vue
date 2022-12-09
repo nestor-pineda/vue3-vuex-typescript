@@ -9,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { computed } from "@vue/reactivity";
+import { computed, ComputedRef } from "@vue/reactivity";
 import { defineComponent } from "vue";
 import { useStore } from "vuex";
 import { Post } from "@/interfaces/store.interface";
@@ -17,7 +17,7 @@ import { Post } from "@/interfaces/store.interface";
 export default defineComponent({
   setup() {
     const store = useStore();
-    const postList = computed<Post[]>(() => store.state.list);
+    const postList: ComputedRef<Post[]> = computed(() => store.state.list);
 
     return { postList };
   },
