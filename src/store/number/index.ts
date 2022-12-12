@@ -1,6 +1,5 @@
 import { Module } from "vuex";
 import { StateInterface } from "../index";
-
 import state, { NumberStateInterface } from "./state";
 import actions from "./actions";
 import getters from "./getters";

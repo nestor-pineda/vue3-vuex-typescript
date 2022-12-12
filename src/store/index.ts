@@ -15,12 +15,12 @@
 
 import { createStore } from "vuex";
 
-// My custom modules
+// modules
 import placesModule from "./places";
-import { PlaceStateInterface } from "./places/state";
 import numberModule from "./number";
+// modules interfaces
+import { PlaceStateInterface } from "./places/state";
 import { NumberStateInterface } from "./number/state";
-
 export interface StateInterface {
   places: PlaceStateInterface;
   number: NumberStateInterface;
