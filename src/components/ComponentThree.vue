@@ -9,18 +9,21 @@
 </template>
 
 <script lang="ts">
-import { StateInterface } from "@/store";
-import { computed } from "@vue/reactivity";
+import { useNumberStore } from "@/composables";
 import { defineComponent } from "vue";
-import { useStore } from "vuex";
+// import { StateInterface } from "@/store";
+// import { computed } from "@vue/reactivity";
+// import { useStore } from "vuex";
 
 export default defineComponent({
   setup() {
-    const store = useStore<StateInterface>();
-    const counter = computed<number>(() => store.state.number.counter);
-    const addValueToArray = () => store.commit("number/addSelectedNumbers", counter.value);
-    const savedNums = computed<number[]>(() => store.state.number.selectedNumbers);
-    const deleteValueFromArray = (num: number) => store.commit("number/deleteNumber", num);
+    const { counter, addValueToArray, savedNums, deleteValueFromArray } = useNumberStore();
+
+    // const store = useStore<StateInterface>();
+    // const counter = computed<number>(() => store.state.number.counter);
+    // const addValueToArray = () => store.commit("number/addSelectedNumbers", counter.value);
+    // const savedNums = computed<number[]>(() => store.state.number.selectedNumbers);
+    // const deleteValueFromArray = (num: number) => store.commit("number/deleteNumber", num);
 
     return { counter, addValueToArray, savedNums, deleteValueFromArray };
   },

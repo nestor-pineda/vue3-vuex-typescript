@@ -15,21 +15,24 @@
 
 <script lang="ts">
 import { defineComponent } from "vue";
-import { useStore } from "vuex";
+// import { useStore } from "vuex";
 import { ref } from "@vue/reactivity";
-import { StateInterface } from "@/store";
+// import { StateInterface } from "@/store";
+import { useNumberStoreForInputs } from "@/composables";
 
 export default defineComponent({
   setup() {
-    const store = useStore<StateInterface>();
+    // const store = useStore<StateInterface>();
     let inputNumber = ref<number>(0);
     let showNumber = ref<number>(0);
+
+    const { setCounter } = useNumberStoreForInputs(inputNumber);
 
     const submit = () => {
       return (showNumber.value = inputNumber.value);
     };
 
-    const setCounter = () => store.commit("number/setInitialCounter", inputNumber.value);
+    // const setCounter = () => store.commit("number/setInitialCounter", inputNumber.value);
 
     return { inputNumber, showNumber, submit, setCounter };
   },
